@@ -1,0 +1,57 @@
+AllCops:
+  TargetRubyVersion: 2.5.3
+
+Documentation:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+# Style
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/FormatString:
+  EnforcedStyle: percent
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# Metrics
+
+Metrics/LineLength:
+  Max: 90
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'app/admin/**/*.rb'
+    - 'db/**/*'
+    - 'config/**/*'
+  ExcludedMethods:
+    - included
+
+# Layout
+
+Layout/DotPosition:
+  Description: 'Checks the position of the dot in multi-line method calls.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
+  EnforcedStyle: leading
+  Enabled: true
