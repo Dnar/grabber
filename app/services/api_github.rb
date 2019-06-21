@@ -12,7 +12,7 @@ class ApiGithub
 
   def connection
     base_url = 'https://api.github.com/repos/'
-    full_url = "#{base_url}#{path}?per_page=20?sha=master?author=#{request_params[:author_email]}"
+    full_url = "#{base_url}#{path}?per_page=200?sha=master?author=#{request_params[:author_email]}"
 
     Faraday.new(url: full_url) do |faraday|
       faraday.request  :json

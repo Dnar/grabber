@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class FetchCommits < Api::V1::Base
+    class FetchCommits < Base
       version 'v1', using: :path
       format :json
       prefix :api

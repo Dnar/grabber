@@ -10,7 +10,7 @@ describe Api::V1::FetchCommits, type: :request do
 
       it 'will update Commit and return 2xx' do
         expect(response).to have_http_status(:success)
-        expect(Commit.count).to eq 3
+        expect(Commit.count).to eq JSON.parse(response.body).count
       end
     end
 
