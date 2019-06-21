@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password:
+  host: db
+  pool: 5
+
+development:
+  <<: *default
+  database: grabber_development
+
+test:
+  <<: *default
+  database: grabber_test
+
+production:
+  <<: *default
+  database: grabber_production
+  username: grabber
+  password: <%= ENV['GRABBER_DATABASE_PASSWORD'] %>

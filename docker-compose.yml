@@ -1,13 +1,33 @@
 version: '2'
 services:
+  nginx:
+    image: bitnami/nginx:1.10.2-r1
+    volumes:
+      - ./config/nginx:/bitnami/nginx/conf/vhosts
+    depends_on:
+      - backend
+      - frontend
+    environment:
+      VIRTUAL_HOST: grabber.docker
+      VIRTUAL_PORT: 8080
+    ports:
+      - 8080:8080
   db:
     image: postgres
-  web:
-    build: .
-    command: bundle exec rails s -e development -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/grabber
-    ports:
-      - "3000:3000"
+  backend:
+    build: backend
     depends_on:
       - db
+    volumes:
+      - ./backend:/usr/src/backend-app
+  frontend:
+    build:
+      context: ./frontend/
+    depends_on:
+      - backend
+    command: npm start
+    volumes:
+      - ./frontend/:/usr/src/frontend-app
+      - ./frontend/node_modules:/usr/src/frontend-app/node_modules
+    ports:
+      - "35729:35729"
