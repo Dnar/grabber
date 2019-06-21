@@ -16,5 +16,8 @@ Bundler.require(*Rails.groups)
 module Grabber
   class Application < Rails::Application
     config.api_only = true
+
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

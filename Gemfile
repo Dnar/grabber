@@ -5,12 +5,15 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'api-pagination'
 gem 'awesome_pry'
 gem 'dotenv'
 gem 'dry-initializer', '~> 2.5.0'
 gem 'faraday', '~> 0.10'
-gem 'faraday_middleware'
-gem 'faraday_middleware-parse_oj'
+gem 'grape'
+gem 'grape_on_rails_routes'
+gem 'grape-entity'
+gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.7'
@@ -21,8 +24,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'active_record-annotate', git: 'https://github.com/7even/active_record-annotate.git',
-                                ref: 'd4ab3e9662033f1b7a2ae288a10947da506bf931'
   gem 'listen', '~> 3.0.5'
   gem 'rubocop', require: false
   gem 'spring'
