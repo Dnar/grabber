@@ -14,27 +14,19 @@ module Api
         requires :author_email, type: String
       end
       post :fetch_and_save_commits do
-        error!(fetch_github_commits.body['message'], fetch_github_commits.status) unless fetch_github_commits.success
-        save_commits
-        paginate Commit.all
-      end
+        url_path = "#{params[:owner]}/#{params[:repo]}/commits"
+        fetch_github_commits = ApiGithub.new(url_path, params).perform_request
 
-      private
+        unless fetch_github_commits.success?
+          error!(fetch_github_commits.body['message'], fetch_github_commits.status)
+        end
 
-      def fetch_github_commits
-        @fetch_github_commits ||=
-          ApiGithub.new(url_path, params).perform_request
-      end
-
-      def url_path(params)
-        "#{params[:owner]}/#{params[:repo]}/commits"
-      end
-
-      def save_commits
         Commit.delete_all
         fetch_github_commits.body.map do |commit|
           Commit.create!(data: commit)
         end
+
+        paginate Commit.all
       end
     end
   end
