@@ -59,5 +59,8 @@ export default class Header extends React.Component{
       })
       .then( (res) => res.json() )
       .then( (data) => {this.props.onData(data)} )
+      .catch(error => {
+        alert('Не удалось найти коммиты по введенным данным')
+       })
     }
   }
