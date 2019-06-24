@@ -5,9 +5,9 @@ export default class Header extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      owner: 'Dnar',
-      repo: 'grabber',
-      author_email: 'chanky@list.ru'
+      owner: '',
+      repo: '',
+      author_email: ''
     }
   }
   render() {
