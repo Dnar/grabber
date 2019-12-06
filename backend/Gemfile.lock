@@ -132,7 +132,7 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -235,7 +235,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.0.5)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.0.7)
   rspec-rails
   rubocop
