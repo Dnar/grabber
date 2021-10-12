@@ -17,7 +17,7 @@ gem 'grape_on_rails_routes'
 gem 'grape-entity'
 gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.0.7'
 
 group :development, :test do
